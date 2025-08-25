@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>WesPlayer</title>
+        <link rel="stylesheet" href="style.css" />
+        <script defer src="app.js"></script>
+    </head>
+    <body>
+        <div class="app" id="app">
+            <aside class="sidebar" id="drop-zone" aria-label="Playlist sidebar" aria-describedby="drop-desc">
+                <div class="sidebar-header">
+                    <h1 class="logo" aria-label="App name">WesPlayer</h1>
+                    <div class="toolbar">
+                        <label class="upload-btn" title="Upload audio files" aria-label="Upload audio files" aria-describedby="upload-desc">
+                            <input id="file-input" type="file" accept="audio/*" multiple hidden />
+                            <img
+                                class="icon icon-upload"
+                                src="icons/upload.svg"
+                                alt=""
+                                aria-hidden="true"
+                                onerror="this.style.display='none'"
+                                onload="this.closest('label').classList.add('has-icon')"
+                            />
+                            <span class="label">Upload</span>
+                            <span id="upload-desc" class="sr-only"
+                                >Select audio files to add to the playlist. You can also drag and drop files into the sidebar.</span
+                            >
+                        </label>
+                        <button id="shuffle-toggle" class="btn ghost" aria-pressed="false" aria-label="Shuffle: Off" title="Toggle shuffle">
+                            <img
+                                class="icon icon-shuffle"
+                                src="icons/shuffle.svg"
+                                alt=""
+                                aria-hidden="true"
+                                onerror="this.style.display='none'"
+                                onload="this.closest('button').classList.add('has-icon')"
+                            />
+                            <span class="label">Shuffle: Off</span>
+                        </button>
+                    </div>
+                </div>
+                <ul id="playlist" class="playlist" aria-label="Playlist"></ul>
+                <div id="drop-desc" class="drop-hint">Drag & drop audio files here</div>
+            </aside>
+
+            <main class="main" aria-label="Player main area">
+                <section class="now-playing" aria-live="polite">
+                    <div class="track-title" id="track-title">No track</div>
+                </section>
+
+                <div class="player-bottom">
+                    <section class="progress" aria-label="Playback progress">
+                        <span id="current-time" class="time">0:00</span>
+                        <input id="seek" type="range" min="0" max="100" value="0" step="0.01" aria-label="Seek" />
+                        <span id="duration" class="time">0:00</span>
+                    </section>
+
+                    <div class="controls-row" aria-label="Controls row">
+                        <div class="left-spacer" aria-hidden="true"></div>
+                        <section class="controls" aria-label="Playback controls">
+                            <button id="btn-prev" class="btn btn-round" aria-label="Previous">
+                                <img
+                                    class="icon icon-prev"
+                                    src="icons/skip-prev.svg"
+                                    alt=""
+                                    aria-hidden="true"
+                                    onerror="this.style.display='none'"
+                                    onload="this.closest('button').classList.add('has-icon')"
+                                />
+                                <span class="fallback"></span>
+                            </button>
+                            <button id="btn-play" class="btn primary btn-round" aria-label="Play" data-state="play">
+                                <img
+                                    class="icon icon-play"
+                                    src="icons/ctrl-play.svg"
+                                    alt=""
+                                    aria-hidden="true"
+                                    onerror="this.style.display='none'"
+                                    onload="this.closest('button').classList.add('has-icon')"
+                                />
+                                <img
+                                    class="icon icon-pause"
+                                    src="icons/ctrl-pause.svg"
+                                    alt=""
+                                    aria-hidden="true"
+                                    onerror="this.style.display='none'"
+                                    onload="this.closest('button').classList.add('has-icon')"
+                                />
+                                <span class="fallback fallback-play"></span>
+                                <span class="fallback fallback-pause"></span>
+                            </button>
+                            <button id="btn-next" class="btn btn-round" aria-label="Next">
+                                <img
+                                    class="icon icon-next"
+                                    src="icons/skip-next.svg"
+                                    alt=""
+                                    aria-hidden="true"
+                                    onerror="this.style.display='none'"
+                                    onload="this.closest('button').classList.add('has-icon')"
+                                />
+                                <span class="fallback"></span>
+                            </button>
+                        </section>
+                        <div class="right-slot">
+                            <input id="volume" type="range" min="0" max="1" step="0.01" value="1" aria-label="Volume" />
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <noscript> JavaScript is required to use WesPlayer. </noscript>
+    </body>
+</html>
