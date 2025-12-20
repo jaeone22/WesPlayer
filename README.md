@@ -1,8 +1,8 @@
 ## WesPlayer
-This is a web-based music player with all the complex features removed.
-Data such as records and storage are not saved in the browser.
-It is developed purely with HTML, CSS, JS.
+A web music player created so the person next to you cannot see your music information.
+It plays music via file uploads, and no information is stored in the browser or on the server.
 
 ## How to use
-1. Click the "Upload" button to upload audio files.
+1. Click the "Upload" button to upload audio/video files.
+   - For video files, click "View" to show the mini video player (hidden by default).
 2. Enjoy your music! - That's all!

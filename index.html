@@ -13,8 +13,8 @@
                 <div class="sidebar-header">
                     <h1 class="logo" aria-label="App name">WesPlayer</h1>
                     <div class="toolbar">
-                        <label class="upload-btn" title="Upload audio files" aria-label="Upload audio files" aria-describedby="upload-desc">
-                            <input id="file-input" type="file" accept="audio/*" multiple hidden />
+                        <label class="upload-btn" title="Upload media files" aria-label="Upload media files" aria-describedby="upload-desc">
+                            <input id="file-input" type="file" accept="audio/*,video/*" multiple hidden />
                             <img
                                 class="icon icon-upload"
                                 src="icons/upload.svg"
@@ -24,9 +24,7 @@
                                 onload="this.closest('label').classList.add('has-icon')"
                             />
                             <span class="label">Upload</span>
-                            <span id="upload-desc" class="sr-only"
-                                >Select audio files to add to the playlist. You can also drag and drop files into the sidebar.</span
-                            >
+                            <span id="upload-desc" class="sr-only">Select audio or video files to add to the playlist. You can also drag and drop files into the sidebar.</span>
                         </label>
                         <button id="shuffle-toggle" class="btn ghost" aria-pressed="false" aria-label="Shuffle: Off" title="Toggle shuffle">
                             <img
@@ -42,12 +40,17 @@
                     </div>
                 </div>
                 <ul id="playlist" class="playlist" aria-label="Playlist"></ul>
-                <div id="drop-desc" class="drop-hint">Drag & drop audio files here</div>
+                <div id="drop-desc" class="drop-hint">Drag & drop audio/video files here</div>
             </aside>
 
             <main class="main" aria-label="Player main area">
                 <section class="now-playing" aria-live="polite">
-                    <div class="track-title" id="track-title">No track</div>
+                    <div class="now-playing-row">
+                        <div class="track-title" id="track-title">No track</div>
+                        <button id="video-toggle" class="btn ghost" aria-pressed="false" aria-label="Show video" title="Show video" disabled>
+                            <span class="label">View</span>
+                        </button>
+                    </div>
                 </section>
 
                 <div class="player-bottom">
@@ -109,6 +112,12 @@
                     </div>
                 </div>
             </main>
+        </div>
+
+        <div id="video-mini" class="video-mini" data-open="false" aria-hidden="true">
+            <video id="video-player" class="video-player" playsinline></video>
+            <button id="video-mini-close" class="video-mini-close" type="button" aria-label="Close video" title="Close video">✕</button>
+            <div id="video-mini-resize" class="video-mini-resize" aria-hidden="true"></div>
         </div>
 
         <noscript> JavaScript is required to use WesPlayer. </noscript>
