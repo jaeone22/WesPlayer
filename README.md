@@ -1,3 +1,5 @@
+**English** | [한국어](README.ko.md)
+
 # WesPlayer
 A web music player created so the person next to you cannot see your music information.
 It plays music via file uploads, and no information is stored in the browser or on the server.
